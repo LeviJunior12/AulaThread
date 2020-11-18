@@ -2,7 +2,10 @@ package com.example.aulathreadcoroutines
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -17,7 +20,6 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         coroutines()
-
     }
 
     fun callMain() {
@@ -39,6 +41,12 @@ class SplashScreen : AppCompatActivity() {
                 callMain()
             }
         })
+    }
+
+    fun handle() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            callMain()
+        }, 2000)
     }
 
 }
